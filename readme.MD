@@ -3,18 +3,18 @@
 >简书: [https://www.jianshu.com/p/b5ef0e7e2b87](https://www.jianshu.com/p/b5ef0e7e2b87)  
 >CSDN: [https://mp.csdn.net/mdeditor/79759833](https://mp.csdn.net/mdeditor/79759833)
 
-        首先说说我的目标把，就是抓取巨潮资讯网上一些上市农业企业的基本信息，主要是对页面的公司概况、高
+    首先说说我的目标把，就是抓取巨潮资讯网上一些上市农业企业的基本信息，主要是对页面的公司概况、高
 	管人员、十大股东这几个板块的信息进行抓取，如图。要抓取的上市农业企业的名单已经准备好了，但是同时要
 	拿到的这些农业企业的url地址。本来考虑的是做一个整站提取url，但是再想一想，这个网站包含了太多上市
 	公司的信息，即使拿到了，也需要慢慢找。加上我们要抓取的农业企业不多，所以分析页面结果后，手动整理
 	他们的url，算是本爬虫的一个缺陷。
 ![](http://p2lakvkq0.bkt.clouddn.com/cninfo.jpg)
 
-		巨潮资讯地址：http://www.cninfo.com.cn/information/companyinfo_n.html?brief?szmb000998
-		上面这个就是公司概况的url地址，而高管人员只需要把brief换成management,十大股东只需要把brief
+	巨潮资讯地址：http://www.cninfo.com.cn/information/companyinfo_n.html?brief?szmb000998
+	上面这个就是公司概况的url地址，而高管人员只需要把brief换成management,十大股东只需要把brief
 	换成shareholders，而后面的后缀szmb000998这个是手动整理的，这个szmb没看出什么意思，后面的数字是
 	当前公司的股票代码。
-		经过分析，发现网页是动态加载的，里面的内容都是通过js来控制iframe进行展现的，通过scrapy中
+	经过分析，发现网页是动态加载的，里面的内容都是通过js来控制iframe进行展现的，通过scrapy中
 	response.body获取网页的返回结果中，没有完美所需要的内容，所以我们需要用selenium。
 ## 一、PhantomJS--[PhantomJS安装验证](http://gongyanli.com/Python3%E7%88%AC%E8%99%AB-PhantomJS%E5%AE%89%E8%A3%85/)
 	PhantomJS是一个基于webkit内核的没有界面的浏览器，所以它和chrome、Firefox这些没有什么差别，只是
