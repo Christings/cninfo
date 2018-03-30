@@ -3,27 +3,6 @@ from scrapy import Request
 from scrapy.spiders import Spider
 from selenium import webdriver
 from ..items import AgriManaItem
-from scrapy.selector import Selector
-from selenium.common.exceptions import NoSuchElementException
-
-
-# broswer = webdriver.PhantomJS(executable_path=r'E:\Program Files\phantomjs-2.1.1-windows\bin\phantomjs.exe')
-# broswer.get("http://www.cninfo.com.cn/information/companyinfo_n.html?brief?szmb000998")
-# broswer.switch_to.frame('i_nr')
-# try:
-#     logo = broswer.find_element_by_xpath('//div[@class="clear"]/table/tbody/tr[1]/td[2]')
-# except NoSuchElementException:
-#     print("no")
-# # broswer.switch_to.parent_frame()
-# # logo = broswer.find_element_by_class_name('zx_right_title')
-# print(logo)
-# print(logo.text)
-
-
-# print(broswer.page_source)
-# print(broswer.current_url)
-
-
 
 # 巨潮资讯网--上市农业企业基本信息
 class CninfoSpider(Spider):

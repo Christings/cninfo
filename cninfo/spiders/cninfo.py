@@ -1,38 +1,12 @@
 # --*-- coding:utf-8 -*-
-import scrapy
 from scrapy import Request
 from scrapy.spiders import Spider
 from selenium import webdriver
 from ..items import AgriBasicItem
-from scrapy.selector import Selector
-from selenium.common.exceptions import NoSuchElementException
-
-
-# broswer = webdriver.PhantomJS(executable_path=r'E:\Program Files\phantomjs-2.1.1-windows\bin\phantomjs.exe')
-# broswer.get("http://www.cninfo.com.cn/information/companyinfo_n.html?brief?szmb000998")
-# broswer.switch_to.frame('i_nr')
-# try:
-#     logo = broswer.find_element_by_xpath('//div[@class="clear"]/table/tbody/tr[1]/td[2]')
-# except NoSuchElementException:
-#     print("no")
-# # broswer.switch_to.parent_frame()
-# # logo = broswer.find_element_by_class_name('zx_right_title')
-# print(logo)
-# print(logo.text)
-
-
-# print(broswer.page_source)
-# print(broswer.current_url)
-
-
 
 # 巨潮资讯网--上市农业企业基本信息
 class CninfoSpider(Spider):
     name = 'CninfoSpider'
-
-    #
-    # allow_domains = ['cninfo.com.cn']
-    # start_urls = ['http://www.cninfo.com.cn/information/companyinfo_n.html?brief?szmb000998']
 
     def __init__(self):
         self.broswer = webdriver.PhantomJS(
@@ -64,25 +38,6 @@ class CninfoSpider(Spider):
 
     def parse(self, response):
         item = AgriBasicItem()
-
-        # base = response.xpath('//div[@class="clear2"]/div[@class="zx_left"]/div[2]/table/tbody/')
-        # for each in base:
-        #     # full_name = each.xpath('//tr[1]/td[2]/text()').extract()  # 公司名称
-        # en_name = each.xpath('//tr[2]/td[2]/text()').extract()  # 英文名称
-        # cn_name = full_name  # 中文名称
-        # nation = 'china'  # 国别
-        # address = each.xpath('//tr[3]/td[2]/text()').extract()  # 注册地址
-        # established_time = None  # 成立时间
-        # stock_time = each.xpath('//tr[13]/td[2]/text()').extract()  # 上市时间
-        # # shareholders = scrapy.Field()  # 主要股东
-        # industry = each.xpath('//tr[8]/td[2]/text()').extract()  # 行业(经营类别)
-        # # managers = scrapy.Field()  # 主要管理人员
-        # parent_company = None  # 母公司
-        # subsidiaries = None  # 子公司
-        # offical_website = each.xpath('//tr[12]/td[2]/text()').extract()  # 官网
-        # phone = each.xpath('//tr[10]/td[2]/text()').extract()  # 公司电话
-        # fax = each.xpath('//tr[11]/td[2]/text()').extract()  # 公司传真
-        # Twitter = None  # Twitter
 
         item['full_name'] = response.xpath(
             '//div[@class="clear2"]/div[@class="zx_left"]/div[2]/table/tbody/tr[1]/td[2]/text()').extract()[0]  # 公司名称
